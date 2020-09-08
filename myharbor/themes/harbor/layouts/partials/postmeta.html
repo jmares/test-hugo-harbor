@@ -4,11 +4,28 @@
   {{ else }}
   {{ .Scratch.Set "readingTime" "minute" }}
   {{ end }}
-  <i class="fa fa-calendar-alt"></i>&nbsp;{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}&nbsp;<i class="fa fa-clock"></i>&nbsp;{{ .ReadingTime }}&nbsp;{{ .Scratch.Get "readingTime" }}
   {{ if .Params.categories }}
-    &nbsp;&nbsp;&nbsp;<i class="fa fa-folder-open"></i>&nbsp;
+  <i class="fa fa-pen-fancy"></i>&nbsp;
+    {{ range .Params.authors }}
+      {{ . }}&nbsp;
+    {{ end }}
+  {{ end }}
+  &nbsp;&nbsp;&nbsp;
+  <i class="fa fa-calendar-alt"></i>
+  &nbsp;&nbsp;&nbsp;{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}
+  &nbsp;&nbsp;&nbsp;
+  <i class="fa fa-clock"></i>&nbsp;{{ .ReadingTime }}&nbsp;{{ .Scratch.Get "readingTime" }}<br>
+  {{ if .Params.categories }}
+    <i class="fa fa-folder-open"></i>&nbsp;
     {{ range .Params.categories }}
       <a href="{{ $.Site.BaseURL }}/categories/{{ . | urlize }}/">{{ . }}</a>&nbsp;
+    {{ end }}
+  {{ end }}
+  &nbsp;&nbsp;&nbsp;
+  {{ if .Params.tags }}
+    <i class="fa fa-tag"></i>&nbsp;
+    {{ range .Params.tags }}
+      <a href="{{ $.Site.BaseURL }}/tags/{{ . | urlize }}/">{{ . }}</a>&nbsp;
     {{ end }}
   {{ end }}
 </span>
