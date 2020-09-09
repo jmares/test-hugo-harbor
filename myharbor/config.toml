@@ -15,8 +15,8 @@ theme = "harbor"
   name = "John Doe"
 
 [permalinks]
-	post = "/:year/:month/:day/:filename/"
-	page = "/:filename/"
+	post = "/post/:year/:month/:day/:filename/"
+	page = "/page/:filename/"
 
 [outputs]
     section = ["JSON", "HTML"]
@@ -25,7 +25,7 @@ theme = "harbor"
   identifier = "about"
   name = "About"
   icon = "fas fa-user fa-lg"
-  url = "/about/"
+  url = "/page/about/"
   weight = 3
 
 [[params.nav]]
@@ -39,7 +39,7 @@ theme = "harbor"
   identifier = "search"
   name = "Search"
   icon = "fas fa-search fa-lg"
-  url = "/search/"
+  url = "/page/search/"
   weight = 3
 
 [params]
